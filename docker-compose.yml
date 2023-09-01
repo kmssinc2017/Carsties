@@ -18,6 +18,9 @@ services:
       - mongodata:/var/lib/mongodb/data
   rabbitmq:
     image: rabbitmq:3-management-alpine
+    # environment:
+    #   - RABBITMQ_DEFAULT_USER=admin
+    #   - RABBITMQ_DEFAULT_PASS=pwd
     ports:
       - 5672:5672
       - 15672:15672
