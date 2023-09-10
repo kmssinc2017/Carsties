@@ -15,11 +15,11 @@ namespace AuctionService.Controllers;
 [Route("api/auctions")]
 public class AuctioinController : ControllerBase
 {
-    private readonly AucationDbContext _context;
+    private readonly AuctionDbContext _context;
     private readonly IMapper _mapper;
     private readonly IPublishEndpoint _publishEndpoint;
 
-    public AuctioinController(AucationDbContext context, IMapper mapper, IPublishEndpoint publishEndpoint)
+    public AuctioinController(AuctionDbContext context, IMapper mapper, IPublishEndpoint publishEndpoint)
     {
         _context = context;
         _mapper = mapper;

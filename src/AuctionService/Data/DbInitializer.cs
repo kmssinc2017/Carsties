@@ -9,10 +9,10 @@ public class DbInitializer
     public static void InitDb(WebApplication app)
     {
         using var scope = app.Services.CreateScope();
-        SeedData(scope.ServiceProvider.GetRequiredService<AucationDbContext>());
+        SeedData(scope.ServiceProvider.GetRequiredService<AuctionDbContext>());
     }
 
-    private static void SeedData(AucationDbContext context)
+    private static void SeedData(AuctionDbContext context)
     {
        context.Database.Migrate();
        if(context.Auctions.Any())

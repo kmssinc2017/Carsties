@@ -10,14 +10,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddDbContext<AucationDbContext>(opt => {
+builder.Services.AddDbContext<AuctionDbContext>(opt => {
     opt.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddMassTransit(x => {
 
-    x.AddEntityFrameworkOutbox<AucationDbContext>(o => {
+    x.AddEntityFrameworkOutbox<AuctionDbContext>(o => {
         o.QueryDelay = TimeSpan.FromSeconds(10);
         o.UsePostgres();
         o.UseBusOutbox();

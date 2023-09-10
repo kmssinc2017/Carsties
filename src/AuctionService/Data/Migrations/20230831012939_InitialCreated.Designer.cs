@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace AuctionService.Data.Migrations
 {
-    [DbContext(typeof(AucationDbContext))]
+    [DbContext(typeof(AuctionDbContext))]
     [Migration("20230831012939_InitialCreated")]
     partial class InitialCreated
     {
