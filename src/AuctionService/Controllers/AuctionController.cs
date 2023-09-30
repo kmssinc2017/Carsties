@@ -67,7 +67,7 @@ public class AuctioinController : ControllerBase
         bool result = await _context.SaveChangesAsync() > 0;
 
         if(!result) return BadRequest("Could not save chnages to the DB");
-
+        newAuction.Id = auction.Id;
         return CreatedAtAction(nameof(GetAuctionById), new {auction.Id}, _mapper.Map<AuctionDto>(newAuction));
     }
 
