@@ -1,28 +1,37 @@
 "use server"
 import { Auction, PagedResult } from "@/types"
-import { getTokenWorkAround } from "./authActions"
+import { fetchWarpper } from "@/lib/fetchWrapper"
+import { FieldValues } from "react-hook-form"
+import { revalidatePath } from "next/cache"
 
 export async function getData(query: string): Promise<PagedResult<Auction>> {
-  const res = await fetch(`http://localhost:6001/search${query}`)
-  if (!res.ok) throw new Error("Failed to fech data.")
-
-  return res.json()
+  return await fetchWarpper.get(`search${query}`)
 }
 
-export async function UpdateAuctionTest() {
+export async function updateAuctionTest() {
   const data = {
     mileage: Math.floor(Math.random() * 100000) + 1,
   }
+  const id: string = "!e3427462-ba22-4e09-90ac-02a758c3b767"
+  return await fetchWarpper.put(`auctions/${id}`, data)
+}
 
-  const token = await getTokenWorkAround()
-  const res = await fetch("http://localhost:60001/autions", {
-    method: "PUT",
-    headers: {
-      "content-type": "application/json",
-      Authorization: "Bearer " + token?.access_token,
-    },
-    body: JSON.stringify(data),
-  })
-  if (!res.ok) return { status: res.status, message: res.statusText }
-  return res.statusText
+export async function createAuction(data: FieldValues) {
+  return await fetchWarpper.post("auctions", data)
+}
+
+export async function updateAuction(data: FieldValues, id: string) {
+  console.log(data)
+  console.log(id)
+  return await fetchWarpper.put(`auctions/${id}`, data)
+}
+
+export async function getDetailedViewData(id: string): Promise<Auction> {
+  const res = await fetchWarpper.get(`auctions/${id}`)
+  revalidatePath(`/auctions/${id}`)
+  return res
+}
+
+export async function deleteAuction(id: string) {
+  return await fetchWarpper.del(`auctions/${id}`);
 }

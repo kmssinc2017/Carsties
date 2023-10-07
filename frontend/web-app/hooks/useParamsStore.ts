@@ -11,6 +11,8 @@ export type State = {
   searchValue: string
   orderBy: string
   filterBy: string
+  seller?: string
+  winner?: string
 }
 
 // These are the actions that we'll support within the state. We'll call this action to update the state.
@@ -30,6 +32,8 @@ const initialState: State = {
   searchValue: "",
   orderBy: "",
   filterBy: "live",
+  seller: undefined,
+  winner: undefined,
 }
 
 // We'll export the state and actions. Because it's expecting state and actions, we need to provide all methods and properties
