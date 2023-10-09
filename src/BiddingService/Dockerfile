@@ -27,9 +27,12 @@ COPY src/IdentityService/IdentityService.csproj src/IdentityService/IdentityServ
 RUN dotnet restore carsties.sln
 
 # COPY app folder over
-COPY src/IdentityService src/IdentityService
+COPY src/AuctionService src/AuctionService
+# Auction Service has a dependencies on Contract service, so we have to copy the constract service files as well.
+COPY src/Contracts src/Contracts
+
 # Change the working directory where we can publish the files.
-WORKDIR /app/src/IdentityService
+WORKDIR /app/src/AuctionService
 # Using dotnet publish to push AuctionService into the output directory of /app/src/out
 RUN  dotnet publish -c Release -o /app/src/out
 
@@ -42,5 +45,5 @@ WORKDIR /app
 # copy all property files from build to /app/src/out from our current directory (represented by the .)
 COPY --from=build /app/src/out .
 # specify the entry point for our application
-ENTRYPOINT [ "dotnet", "IdentityService.dll" ]
+ENTRYPOINT [ "dotnet", "AuctionService.dll" ]
 
