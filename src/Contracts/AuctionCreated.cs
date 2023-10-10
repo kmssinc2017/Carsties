@@ -4,7 +4,7 @@ namespace Contracts;
 
 public class AuctionCreated
 {
-     public Guid Id { get; set;}
+    public Guid Id { get; set;}
     public int ReservePrice { get; set; }
     public string Seller { get; set; } 
 
