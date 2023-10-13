@@ -32,7 +32,7 @@ public class BidsController : ControllerBase
         var auction = await DB.Find<Auction>().OneAsync(auctionId);
         if(auction == null) 
         {
-            auction = await _grpcClient.GetAuctions(auctionId);
+            auction = _grpcClient.GetAuctions(auctionId);
             if(auction == null) return BadRequest("Cannot accept bids on this auction at this time.");
         }
 

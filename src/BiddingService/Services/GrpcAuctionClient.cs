@@ -1,6 +1,5 @@
 using AuctionService;
 using Grpc.Net.Client;
-using Microsoft.IdentityModel.Tokens;
 
 namespace BiddingService.Services;
 
@@ -15,7 +14,7 @@ public class GrpcAuctionClient
         _config = config;
     }
 
-    public async Task<Auction> GetAuctions(string id)
+    public Auction GetAuctions(string id)
     {
         _logger.LogInformation("===> calling Grpc Service from the client");
 
@@ -25,7 +24,7 @@ public class GrpcAuctionClient
 
         try {
              
-             var reply = await client.GetAuctionAsync(request);
+             var reply = client.GetAuction(request);
              var auction = new Auction
              {
                 ID = reply.Auction.Id,

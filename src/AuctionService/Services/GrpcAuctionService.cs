@@ -1,8 +1,7 @@
-using AucationService.Data;
-using AuctionService;
+using AuctionService.Data;
 using Grpc.Core;
 
-namespace AucationService.Service;
+namespace AuctionService.Services;
 
 public class GrpcAuctionService : GrpcAuction.GrpcAuctionBase
 {

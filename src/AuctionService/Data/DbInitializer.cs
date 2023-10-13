@@ -1,4 +1,4 @@
-using AucationService.Data;
+using AuctionService.Data;
 using AuctionService.Entities;
 using Microsoft.EntityFrameworkCore;
 

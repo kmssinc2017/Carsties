@@ -1,7 +1,7 @@
 namespace BiddingService.DTOs;
 public class BidDto
 {
-    public int Id { get; set; }
+    public string Id { get; set; }
     public string AuctionId { get; set; }   
 
     public string Bidder { get; set; }
