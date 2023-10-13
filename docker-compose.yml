@@ -92,7 +92,7 @@ services:
     image: gagouche/bid-svc:latest
     build:
       context: .
-      dockerfile: /src/BiddingService/Dockerfile
+      dockerfile: /src/BiddingService/Dockerfile 
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
