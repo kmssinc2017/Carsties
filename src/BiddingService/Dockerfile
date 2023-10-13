@@ -34,7 +34,7 @@ COPY src/Contracts src/Contracts
 
 # Change the working directory where we can publish the files.
 WORKDIR /app/src/BiddingService
-# Using dotnet publish to push AuctionService into the output directory of /app/src/out
+# Using dotnet publish to push BiddingService into the output directory of /app/src/out
 RUN  dotnet publish -c Release -o /app/src/out
 
 # Once we have a publish version of the application, we don't need to use the DOTNET SDK ANYMORE
